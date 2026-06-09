@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn It, Love It Inc.</title>
+</head>
+<body style="background-color: #f5f6fa; padding: 30px; font-family: system-ui, sans-serif; color: #2f3640;">
+
+  <h1>Temas de Aprendizaje Recomendados</h1>
+
+  <form action="/topics" method="POST" style="margin-bottom: 25px;">
+    <input type="text" name="title" placeholder="Nuevo tema de aprendizaje..." required style="padding: 8px; width: 250px;">
+    <button type="submit" style="padding: 8px 12px; cursor: pointer;">Agregar Tema</button>
+  </form>
+
+  <hr style="border: 0; border-top: 1px solid #dcdde1; margin-bottom: 20px;">
+
+  <div id="topics-container">
+    <% topics.forEach(function(tema) { %>
+      <div class="topic-card" data-id="<%= tema.id %>" style="background: white; border: 1px solid #dcdde1; padding: 20px; margin: 15px 0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+        
+        <h3 style="margin-top: 0;">
+          <a href="/topics/<%= tema.id %>" style="color: #00a8ff; text-decoration: none;"><%= tema.titulo %></a> 
+          (<span class="vote-count"><%= tema.votos %></span> votos)
+        </h3>
+        
+        <button class="btn-vote" data-id="<%= tema.id %>" style="padding: 6px 12px; cursor: pointer; background: #4cd137; color: white; border: none; border-radius: 4px;">▲ Votar</button>
+
+        <form action="/topics/<%= tema.id %>/update" method="POST" style="display:inline; margin-left: 15px;">
+          <input type="text" name="title" value="<%= tema.titulo %>" required style="padding: 4px;">
+          <button type="submit" style="padding: 4px 8px; cursor: pointer;">Editar</button>
+        </form>
+
+        <form action="/topics/<%= tema.id %>/delete" method="POST" style="display:inline; margin-left: 5px;">
+          <button type="submit" style="padding: 4px 8px; cursor: pointer; background: #e84118; color: white; border: none; border-radius: 4px;">Eliminar</button>
+        </form>
+
+      </div>
+    <% }) %>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
