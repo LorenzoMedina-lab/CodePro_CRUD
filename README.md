@@ -1,4 +1,4 @@
-🎛️ Arquitectura y Flujo Técnico (Para la Defensa Oral)
+🎛️ Arquitectura y Flujo Técnico 
 1. Capa del Modelo (topicModel.js)
 Administra el estado volátil de la aplicación alojado en memoria RAM a través de una colección anidada de objetos JavaScript. Ejecuta un algoritmo de ordenación nativo de orden superior mediante el método .sort() comparando las propiedades de votos en orden descendente.
 
